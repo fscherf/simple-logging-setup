@@ -89,7 +89,16 @@ def configure(**kwargs):
             _configuration[name] = parse_log_level(value)
 
         # switches
-        if name in ('syslog_priorities', ):
+        switches = (
+            'colors',
+            'syslog_is_available',
+            'show_thread_name',
+            'show_level_name',
+            'show_time_stamp',
+            'show_logger_name',
+        )
+
+        if name in switches:
             _configuration[name] = parse_switch(value)
 
 
@@ -97,6 +106,10 @@ _configuration = {
     'level': parse_log_level('info'),
     'syslog_priorities': syslog_is_available() and journald_is_running(),
     'colors': terminal_supports_colors() and colors_are_enabled(),
+    'show_thread_name': True,
+    'show_level_name': True,
+    'show_time_stamp': True,
+    'show_logger_name': True,
     'include': [],
     'exclude': [],
 }

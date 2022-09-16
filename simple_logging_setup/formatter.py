@@ -76,25 +76,42 @@ class LogFormatter(logging.Formatter):
         return f'\033[{style}{color}{background}m{record_string}\033[00m'
 
     def format(self, record):
-        current_thread_name = threading.current_thread().name
+        record_string = ''
 
-        # format record string
-        time_stamp = datetime.datetime.fromtimestamp(record.created)
-        time_stamp_str = time_stamp.strftime('%H:%M:%S.%f')
+        # syslog priority
+        if _configuration['syslog_priorities']:
+            syslog_priority = self.get_syslog_priority(record.levelno)
 
-        record_string = '{}{} {}{} {} {} {}'.format(
-            current_thread_name,
-            (30 - len(current_thread_name)) * ' ',
+            record_string = f'<{syslog_priority}>{record_string}'
 
-            record.levelname,
-            (8 - len(record.levelname)) * ' ',
+        # thread name
+        if _configuration['show_thread_name']:
+            current_thread_name = threading.current_thread().name
+            spacing = (30 - len(current_thread_name)) * ' '
 
-            time_stamp_str,
-            record.name,
-            record.getMessage(),
-        )
+            record_string = f'{record_string}{current_thread_name}{spacing} '
 
-        # format exc_info
+        # level
+        if _configuration['show_level_name']:
+            spacing = (8 - len(record.levelname)) * ' '
+
+            record_string = f'{record_string}{record.levelname}{spacing} '
+
+        # time stamp
+        if _configuration['show_time_stamp']:
+            time_stamp = datetime.datetime.fromtimestamp(record.created)
+            time_stamp_str = time_stamp.strftime('%H:%M:%S.%f')
+
+            record_string = f'{record_string}{time_stamp_str} '
+
+        # logger name
+        if _configuration['show_logger_name']:
+            record_string = f'{record_string}{record.name} '
+
+        # message
+        record_string = f'{record_string}{record.getMessage()}'
+
+        # traceback
         if record.exc_info:
             record_string = '{}\n{}'.format(
                 record_string,
@@ -103,12 +120,6 @@ class LogFormatter(logging.Formatter):
                     prefix='  ',
                 ),
             )
-
-        # syslog priorities
-        if _configuration['syslog_priorities']:
-            syslog_priority = self.get_syslog_priority(record.levelno)
-
-            record_string = f'<{syslog_priority}>{record_string}'
 
         # colors
         if record.levelname == 'INFO' or not _configuration['colors']:

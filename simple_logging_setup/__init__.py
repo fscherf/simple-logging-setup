@@ -7,7 +7,7 @@ from simple_logging_setup.filter import LogFilter
 from simple_logging_setup.configuration import (
     include_logger,
     exclude_logger,
-    get_value,
+    _configuration,
     configure,
 )
 
@@ -20,9 +20,16 @@ _filter = None
 
 
 def setup(loggers=None, **configuration):
+
+    # configuration
     configure(**configuration)
 
-    logging.basicConfig(level=get_value('level'))
+    logging.basicConfig(level=_configuration['level'])
+
+    # if there are no colors available to distinguish records, the level name
+    # has to be printed
+    if not _configuration['colors']:
+        _configuration['show_level_name'] = True
 
     # setup log formatting and log filtering
     log_formatter = LogFormatter()

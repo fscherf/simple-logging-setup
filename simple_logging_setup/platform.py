@@ -1,6 +1,15 @@
 import sys
 import os
 
+try:
+    # syslog is only on unix based systems available
+    import syslog
+
+    _SYSLOG_IS_AVAILABLE = True
+
+except ImportError:
+    _SYSLOG_IS_AVAILABLE = False
+
 
 def terminal_supports_colors():
     return (
@@ -28,4 +37,8 @@ def colors_are_enabled():
 
 def journald_is_running():
     return 'JOURNAL_STREAM' in os.environ and 'TERM' not in os.environ
+
+
+def syslog_is_available():
+    return _SYSLOG_IS_AVAILABLE
 

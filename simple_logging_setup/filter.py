@@ -1,28 +1,16 @@
+from simple_logging_setup.configuration import _configuration
+
 import logging
 
 
 class LogFilter(logging.Filter):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.excluded = []
-        self.included = []
-
-    def clear(self):
-        self.excluded.clear()
-        self.included.clear()
-
-    def include(self, logger_name):
-        self.included.append(logger_name)
-
-    def exclude(self, logger_name):
-        self.excluded.append(logger_name)
-
     def filter(self, record):
-        if record.name in self.excluded:
+        if record.name in _configuration['exclude']:
             return False
 
-        if self.included and record.name not in self.included:
+        if(_configuration['include'] and
+           record.name not in _configuration['include']):
+
             return False
 
         return True

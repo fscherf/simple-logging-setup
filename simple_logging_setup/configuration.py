@@ -77,8 +77,17 @@ def exclude_logger(name):
     _configuration['exclude'].append(name)
 
 
-def configure(**kwargs):
-    for name, value in kwargs.items():
+def configure(preset='', **configuration):
+    if preset:
+        if preset not in _configuration_presets:
+            raise ConfigurationError(f"unknown preset '{preset}'")
+
+    configuration = {
+        **_configuration_presets[preset],
+        **configuration,
+    }
+
+    for name, value in configuration.items():
 
         # invalid name
         if name not in _configuration:
@@ -112,4 +121,19 @@ _configuration = {
     'show_logger_name': True,
     'include': [],
     'exclude': [],
+}
+
+_configuration_presets = {
+    'cli': {
+        'show_thread_name': False,
+        'show_level_name': False,
+        'show_time_stamp': False,
+        'show_logger_name': True,
+    },
+    'service': {
+        'show_thread_name': True,
+        'show_level_name': True,
+        'show_time_stamp': True,
+        'show_logger_name': True,
+    },
 }

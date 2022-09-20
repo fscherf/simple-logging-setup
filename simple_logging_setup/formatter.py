@@ -105,7 +105,9 @@ class LogFormatter(logging.Formatter):
             record_string = f'{record_string}{time_stamp_str} '
 
         # logger name
-        if _configuration['show_logger_name']:
+        if(_configuration['show_logger_name'] and
+           record.name not in _configuration['filter_logger_names']):
+
             record_string = f'{record_string}{record.name} '
 
         # message

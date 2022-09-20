@@ -15,6 +15,9 @@ logger.warning('warning message')
 logger.error('warning message')
 logger.critical('critical message')
 
+logging.info('info logger message')
+logging.warning('warning logger message')
+
 
 try:
     a = 1 / 0

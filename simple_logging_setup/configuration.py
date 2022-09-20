@@ -87,6 +87,15 @@ def configure(preset='', **configuration):
         **configuration,
     }
 
+    switches = (
+        'colors',
+        'syslog_is_available',
+        'show_thread_name',
+        'show_level_name',
+        'show_time_stamp',
+        'show_logger_name',
+    )
+
     for name, value in configuration.items():
 
         # invalid name
@@ -94,21 +103,16 @@ def configure(preset='', **configuration):
             raise ConfigurationError("invalid config name '{}'".format(name))
 
         # level
-        if name == 'level':
+        elif name == 'level':
             _configuration[name] = parse_log_level(value)
 
         # switches
-        switches = (
-            'colors',
-            'syslog_is_available',
-            'show_thread_name',
-            'show_level_name',
-            'show_time_stamp',
-            'show_logger_name',
-        )
-
-        if name in switches:
+        elif name in switches:
             _configuration[name] = parse_switch(value)
+
+        # misc
+        else:
+            _configuration[name] = value
 
 
 _configuration = {
@@ -121,6 +125,7 @@ _configuration = {
     'show_logger_name': True,
     'include': [],
     'exclude': [],
+    'filter_logger_names': [],
 }
 
 _configuration_presets = {
@@ -129,6 +134,7 @@ _configuration_presets = {
         'show_level_name': False,
         'show_time_stamp': False,
         'show_logger_name': True,
+        'filter_logger_names': ['root'],
     },
     'service': {
         'show_thread_name': True,

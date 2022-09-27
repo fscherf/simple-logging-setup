@@ -12,6 +12,9 @@ except ImportError:
 
 
 def terminal_supports_colors():
+    if 'TERMINAL_SUPPORTS_COLORS' in os.environ:
+        return True
+
     return (
         # check if stdout is a tty
         hasattr(sys.stdout, 'isatty') and

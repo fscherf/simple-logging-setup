@@ -108,7 +108,7 @@ class LogFormatter(logging.Formatter):
         if(_configuration['show_logger_name'] and
            record.name not in _configuration['filter_logger_names']):
 
-            record_string = f'{record_string}{record.name} '
+            record_string = f'{record_string}{record.name}: '
 
         # message
         record_string = f'{record_string}{record.getMessage()}'

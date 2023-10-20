@@ -1,6 +1,5 @@
 import logging
 
-from simple_logging_setup.platform import journald_is_running
 from simple_logging_setup.formatter import LogFormatter
 from simple_logging_setup.filter import LogFilter
 
@@ -51,4 +50,3 @@ def setup(loggers=None, **configuration):
                 logger_name = logger_name[1:]
 
             include_logger(logger_name)
-

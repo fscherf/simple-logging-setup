@@ -24,4 +24,3 @@ try:
 
 except Exception:
     logger.exception('exception')
-

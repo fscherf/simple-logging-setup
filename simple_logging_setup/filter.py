@@ -8,10 +8,9 @@ class LogFilter(logging.Filter):
         if record.name in _configuration['exclude']:
             return False
 
-        if(_configuration['include'] and
-           record.name not in _configuration['include']):
+        if (_configuration['include'] and
+                record.name not in _configuration['include']):
 
             return False
 
         return True
-

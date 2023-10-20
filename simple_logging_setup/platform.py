@@ -3,7 +3,7 @@ import os
 
 try:
     # syslog is only on unix based systems available
-    import syslog
+    import syslog  # NOQA: F401
 
     _SYSLOG_IS_AVAILABLE = True
 
@@ -44,4 +44,3 @@ def journald_is_running():
 
 def syslog_is_available():
     return _SYSLOG_IS_AVAILABLE
-

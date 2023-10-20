@@ -77,7 +77,7 @@ def exclude_logger(name):
     _configuration['exclude'].append(name)
 
 
-def configure(preset='', **configuration):
+def configure(preset='service', **configuration):
     if preset:
         if preset not in _configuration_presets:
             raise ConfigurationError(f"unknown preset '{preset}'")

@@ -96,15 +96,15 @@ All configuration is done by adding keyword arguments to
 `simple_logging_setup.setup`.
 
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `level` | `str` | Log level. Choices (case insensitive): `['debug', 'info', 'warn', 'warning', 'error', 'critical']`
-| `colors` | `switch` | Enables or disables colors. Gets disabled by default if the terminal does not support colored output |
-| `syslog_priorities` | `switch` | Enables or disables [syslog severity levels](https://en.wikipedia.org/wiki/Syslog). Gets enabled by default if running in journald |
-| `show_thread_name` | `switch` | Show thread name in log output |
-| `show_level_name` | `switch` | Show log level name in log output. Gets enabled by default if colors are disabled or not available |
-| `show_timestamp` | `switch` | Show timestamp in log output |
-| `show_logger_name` | `switch` | Show logger name in log output |
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `level` | `str` | `info` | Log level. Choices (case insensitive): `['debug', 'info', 'warn', 'warning', 'error', 'critical']`
+| `colors` | `switch` | `True` | Enables or disables colors. Gets disabled by default if the terminal does not support colored output |
+| `syslog_priorities` | `switch` | `False` | Enables or disables [syslog severity levels](https://en.wikipedia.org/wiki/Syslog). Gets enabled by default if running in journald |
+| `show_thread_name` | `switch` | `True` | Show thread name in log output |
+| `show_level_name` | `switch` | `True` | Show log level name in log output. Gets enabled by default if colors are disabled or not available |
+| `show_timestamp` | `switch` | `True` | Show timestamp in log output |
+| `show_logger_name` | `switch` | `True` | Show logger name in log output |
 
 
 `switch` is a special type that does best-effort parsing of incoming values.

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 
 [project]
-version = "0.4"
+version = "0.5"
 name = "simple-logging-setup"
 description = "Nice and simple log formatting for the standard library"
 

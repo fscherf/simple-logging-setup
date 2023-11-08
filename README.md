@@ -3,7 +3,7 @@
 ![license MIT](https://img.shields.io/pypi/l/simple-logging-setup.svg)
 ![Latest Version](https://img.shields.io/pypi/v/simple-logging-setup.svg)
 
-simple-logging-setup is simple yet highly configurable library that provides
+simple-logging-setup is a simple yet highly configurable library that provides
 sane configuration defaults for the logging system in the Python
 standard library.
 

@@ -21,7 +21,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    '--show-time-stamps',
+    '--show-timestamps',
     action='store_true',
 )
 
@@ -31,7 +31,7 @@ args = parser.parse_args()
 setup(
     level=args.log_level,
     loggers=args.loggers,
-    show_time_stamp=args.show_time_stamps,
+    show_timestamp=args.show_timestamps,
 )
 
 # run test

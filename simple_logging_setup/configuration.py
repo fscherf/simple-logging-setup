@@ -92,7 +92,7 @@ def configure(preset='service', **configuration):
         'syslog_priorities',
         'show_thread_name',
         'show_level_name',
-        'show_time_stamp',
+        'show_timestamp',
         'show_logger_name',
     )
 
@@ -121,7 +121,7 @@ _configuration = {
     'colors': terminal_supports_colors() and colors_are_enabled(),
     'show_thread_name': True,
     'show_level_name': True,
-    'show_time_stamp': True,
+    'show_timestamp': True,
     'show_logger_name': True,
     'include': [],
     'exclude': [],
@@ -132,14 +132,14 @@ _configuration_presets = {
     'cli': {
         'show_thread_name': False,
         'show_level_name': False,
-        'show_time_stamp': False,
+        'show_timestamp': False,
         'show_logger_name': True,
         'filter_logger_names': ['root'],
     },
     'service': {
         'show_thread_name': True,
         'show_level_name': True,
-        'show_time_stamp': True,
+        'show_timestamp': True,
         'show_logger_name': True,
     },
 }

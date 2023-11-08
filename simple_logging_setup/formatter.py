@@ -95,12 +95,12 @@ class LogFormatter(logging.Formatter):
 
             record_string = f'{record_string}{record.levelname}{spacing} '
 
-        # time stamp
-        if _configuration['show_time_stamp']:
-            time_stamp = datetime.datetime.fromtimestamp(record.created)
-            time_stamp_str = time_stamp.strftime('%Y/%m/%d %H:%M:%S.%f')
+        # timestamp
+        if _configuration['show_timestamp']:
+            timestamp = datetime.datetime.fromtimestamp(record.created)
+            timestamp_str = timestamp.strftime('%Y/%m/%d %H:%M:%S.%f')
 
-            record_string = f'{record_string}{time_stamp_str} '
+            record_string = f'{record_string}{timestamp_str} '
 
         # logger name
         if (_configuration['show_logger_name'] and

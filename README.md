@@ -72,7 +72,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    '--show-time-stamps',
+    '--show-timestamps',
     action='store_true',
 )
 
@@ -82,12 +82,12 @@ args = parser.parse_args()
 setup(
     level=args.log_level,
     loggers=args.loggers,
-    show_time_stamp=args.show_time_stamps,
+    show_timestamp=args.show_timestamps,
 )
 ```
 
     $ my-tool -l debug --loggers my-logger -disabled-logger
-    $ my-tool --show-time-stamps
+    $ my-tool --show-timestamps
 
 
 ## Configuration
@@ -103,7 +103,7 @@ All configuration is done by adding keyword arguments to
 | `syslog_priorities` | `switch` | Enables or disables [syslog severity levels](https://en.wikipedia.org/wiki/Syslog). Gets enabled by default if running in journald |
 | `show_thread_name` | `switch` | Show thread name in log output |
 | `show_level_name` | `switch` | Show log level name in log output. Gets enabled by default if colors are disabled or not available |
-| `show_time_stamp` | `switch` | Show time stamp in log output |
+| `show_timestamp` | `switch` | Show timestamp in log output |
 | `show_logger_name` | `switch` | Show logger name in log output |
 
 

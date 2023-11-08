@@ -89,7 +89,7 @@ def configure(preset='service', **configuration):
 
     switches = (
         'colors',
-        'syslog_is_available',
+        'syslog_priorities',
         'show_thread_name',
         'show_level_name',
         'show_time_stamp',

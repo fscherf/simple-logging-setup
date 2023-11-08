@@ -10,7 +10,7 @@ from simple_logging_setup.configuration import (
     configure,
 )
 
-VERSION = (0, 3)
+VERSION = (0, 4)
 VERSION_STRING = '.'.join(str(i) for i in VERSION)
 
 # state

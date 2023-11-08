@@ -23,7 +23,7 @@ shell: | $(PYTHON_ENV)
 
 test: | $(PYTHON_ENV)
 	. $(PYTHON_ENV)/bin/activate && \
-	python test.py
+	python test.py $(args)
 
 sdist: | $(PYTHON_ENV)
 	. $(PYTHON_ENV)/bin/activate && \

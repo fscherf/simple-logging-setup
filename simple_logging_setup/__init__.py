@@ -42,9 +42,12 @@ def setup(loggers=None, **configuration):
     loggers = loggers or []
 
     for logger_name in loggers:
-        if logger_name.startswith('_'):
+
+        # exclude
+        if logger_name.startswith('-') or logger_name.startswith('_'):
             exclude_logger(logger_name[1:])
 
+        # include
         else:
             if logger_name.startswith('+'):
                 logger_name = logger_name[1:]

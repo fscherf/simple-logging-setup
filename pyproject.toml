@@ -29,9 +29,9 @@ dev = [
 
 
 [project.urls]
-"Homepage" = "https://lona-web.org"
-"Repository" = "https://github.com/lona-web-org/lona"
-"Bug Tracker" = "https://github.com/lona-web-org/lona/issues"
+"Homepage" = "https://github.com/fscherf/simple-logging-setup"
+"Repository" = "https://github.com/fscherf/simple-logging-setup"
+"Bug Tracker" = "https://github.com/fscherf/simple-logging-setup/issues"
 
 
 [tool.setuptools.packages.find]

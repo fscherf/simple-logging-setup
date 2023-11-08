@@ -15,6 +15,10 @@ authors = [
 license = { file="LICENSE.txt" }
 readme = "README.md"
 
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+]
+
 
 [project.optional-dependencies]
 dev = [

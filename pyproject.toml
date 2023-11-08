@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+version = "0.3"
+name = "simple-logging-setup"
+description = "Nice and simple log formatting for the standard library"
+
+authors = [
+  { name="Florian Scherf", email="mail@florianscherf.de" },
+]
+
+license = { file="LICENSE.txt" }
+readme = "README.rst"
+
+
+[project.optional-dependencies]
+dev = [
+  "build",
+  "twine",
+  "rlpython",
+]
+
+
+[project.urls]
+"Homepage" = "https://lona-web.org"
+"Repository" = "https://github.com/lona-web-org/lona"
+"Bug Tracker" = "https://github.com/lona-web-org/lona/issues"
+
+
+[tool.setuptools.packages.find]
+include = ['simple_logging_setup*']
+
+
+[tool.setuptools.exclude-package-data]
+"*" = [
+  ".*",
+  "~*",
+  "*.swp",
+  "*.pyc",
+]
